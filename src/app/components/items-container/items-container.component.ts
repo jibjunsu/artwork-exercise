@@ -63,6 +63,7 @@ export class ItemsContainerComponent implements OnInit, AfterViewInit, OnDestroy
       }
     }
     this.styleOption = Object.entries(styleMap).map(([key, value]) =>  ({label: `${key} (${value})`, value: `${key}`}));
+    this.selectedStyleFilters = [];
   }
 
   prevPage(): void {
