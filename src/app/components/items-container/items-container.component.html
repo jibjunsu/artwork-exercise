@@ -1,0 +1,77 @@
+<!--Tool Bar-->
+<div class="nx-margin-bottom-2m" nxRow nxRowJustify="center">
+  <div nxLayout="grid maxwidth">
+    <div nxRow nxRowJustify="center">
+      <div nxCol="12, 12, 4">
+        <nx-label>Filter: </nx-label>
+        <nx-formfield nxLabel="Style">
+          <nx-dropdown
+            name="selectedStyleFilters"
+            [(ngModel)]="selectedStyleFilters"
+            [nxIsMultiselect]="true">
+            <nx-dropdown-item
+              *ngFor="let item of styleOption"
+              [nxValue]="item.value"
+            >{{ item.label }}</nx-dropdown-item>
+          </nx-dropdown>
+        </nx-formfield>
+      </div>
+
+
+      <div nxCol="12, 12, 4">
+        <nx-label>Sort by: </nx-label>
+        <nx-formfield >
+          <nx-dropdown
+            name="selectedSortBy"
+            [(ngModel)]="selectedSortBy"
+            [options]="sortByOption"
+          >
+          </nx-dropdown>
+        </nx-formfield>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nx-margin-bottom-3m" nxRow nxRowJustify="center">
+  <nx-pagination
+    [nxCount]="count"
+    [nxPage]="page"
+    [nxPerPage]="perPage"
+    nxType="advanced"
+    (nxGoPrev)="prevPage()"
+    (nxGoNext)="nextPage()"
+    (nxGoPage)="goToPage($event)">
+  </nx-pagination>
+</div>
+
+
+<!--Gallery-->
+<div nxLayout="grid">
+  <div nxRow class="gallery" >
+    <ng-container *ngFor="let item of items$ | async | artworkFilter: selectedStyleFilters : loading | artworkSort: selectedSortBy">
+      <div nxCol="12,6,3" class="nx-margin-bottom-2m" style="align-items: stretch!important;" >
+        <app-item-card [info]="item"></app-item-card>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div class="nx-margin-bottom-3m" nxRow nxRowJustify="center">
+  <nx-pagination
+    [nxCount]="count"
+    [nxPage]="page"
+    [nxPerPage]="perPage"
+    nxType="advanced"
+    (nxGoPrev)="prevPage()"
+    (nxGoNext)="nextPage()"
+    (nxGoPage)="goToPage($event)">
+  </nx-pagination>
+</div>
+
+
+<div class="overlay" *ngIf="loading">
+  <div class="spinner-wrapper">
+    <nx-spinner nxSize="large"></nx-spinner>
+  </div>
+</div>

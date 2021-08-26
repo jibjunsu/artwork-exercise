@@ -1,0 +1,24 @@
+<nx-card class="card">
+  <figure nxFigure="1by1dot1" class="nx-margin-bottom-2m flexible" >
+    <img
+      [src]="getImage(info)"
+      (error)="onImgError($event)"
+      [alt]="info.thumbnail?.alt_text" >
+  </figure>
+  <div class="card-body ">
+    <div>
+      <h3 nxCopytext class="nx-font-weight-semibold nx-margin-bottom-2xs">
+        {{ info.title }}
+      </h3>
+      <p nxCopytext="medium" class="nx-margin-bottom-2xs">
+        {{ info.artist_title }}
+      </p>
+      <p nxCopytext="medium" class="nx-margin-bottom-2xs">
+        {{ info.place_of_origin }} ( {{ getDateArt(info) }} )
+      </p>
+      <p nxCopytext="medium" class="nx-margin-bottom-2xs">
+        {{ info.medium_display }}
+      </p>
+    </div>
+  </div>
+</nx-card>
