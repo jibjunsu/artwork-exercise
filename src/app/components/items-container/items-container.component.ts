@@ -40,7 +40,6 @@ export class ItemsContainerComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.items$ = this.artWorkSubject$.pipe(
       takeUntil(this.destroy$),
       switchMap((option: ArtWorkRequestOption) => this.artWorkService.get$(option).pipe(share())),
