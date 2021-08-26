@@ -19,7 +19,6 @@ import { ArtworkFilterPipe } from './pipes/artwork-filter.pipe';
 import { ArtworkSortPipe } from './pipes/artwork-sort.pipe';
 import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
 import { LoaderInterceptor } from './interceptors/loader-interceptor.service';
-import { NgxMasonryModule } from 'ng-masonry-layout';
 
 @NgModule({
   declarations: [
