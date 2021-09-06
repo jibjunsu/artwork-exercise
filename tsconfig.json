@@ -12,6 +12,8 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
     "lib": [
       "es2018",
       "dom"

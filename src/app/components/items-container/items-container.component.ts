@@ -18,7 +18,7 @@ export class ItemsContainerComponent implements OnInit, AfterViewInit, OnDestroy
   count = environment.maxItemsCount;
   perPage = environment.artWorkRequestDefaultOption.limit;
 
-  artWorkSubject$ = new BehaviorSubject(null);
+  artWorkSubject$ = new BehaviorSubject<ArtWorkRequestOption | null>(null);
   destroy$ = new Subject();
   items$: Observable<Artwork[]> = new Observable<Artwork[]>();
   loading = true;
@@ -53,7 +53,7 @@ export class ItemsContainerComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   setStyleFilterOption = (list: Artwork[]) => {
-    const styleMap: { [label: string]: number } = {};
+    const styleMap: Record<string, number> = {};
     for (const item of list) {
       for (const style of item.style_titles) {
         if (!styleMap[style]) {

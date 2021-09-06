@@ -6,9 +6,9 @@ import { Artwork } from '../models/art-work.model';
 })
 export class ArtworkSortPipe implements PipeTransform {
 
-  transform(array: Artwork[], field: string): Artwork[] {
+  transform(array: Artwork[], field: keyof Artwork | 'default'): Artwork[] {
     if (!Array.isArray(array)) {
-      return;
+      return [];
     }
     if (field === 'default') {
       array.sort((a: Artwork, b: Artwork) => {

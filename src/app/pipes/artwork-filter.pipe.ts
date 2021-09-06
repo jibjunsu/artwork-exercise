@@ -6,7 +6,7 @@ import { Artwork } from '../models/art-work.model';
 })
 export class ArtworkFilterPipe implements PipeTransform {
 
-  transform(artworks: Artwork[], styleList: string[], isLoading): Artwork[] {
+  transform(artworks: Artwork[], styleList: string[], isLoading: boolean): Artwork[] {
     if (isLoading) {
       return [];
     }
